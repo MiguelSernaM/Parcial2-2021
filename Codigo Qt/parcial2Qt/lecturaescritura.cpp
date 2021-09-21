@@ -21,21 +21,30 @@ lecturaEscritura::lecturaEscritura(QString nombre)
     void lecturaEscritura::escribirDatos()
 {
     vector< vector< vector<int> > > arreglo3d(ancho, vector< vector<int> >(alto , vector<int>(color)));
-
+    int tempInt;
     for(int i=0;i<ancho;++i){
         for(int j=0;j<alto;++j){
             for(int k=0;k<color;++k){
                 switch (k) {
                 case 0:{
-                    arreglo3d[i][j][k] = imagenFuente->pixelColor(i,j).red();
+                    tempInt = imagenFuente->pixelColor(i,j).red();
+                    if(tempInt == 255)
+                        tempInt--;
+                    arreglo3d[i][j][k] = tempInt;
                     break;
                 }
                 case 1:{
-                    arreglo3d[i][j][k] = imagenFuente->pixelColor(i,j).green();
+                    tempInt = imagenFuente->pixelColor(i,j).green();
+                    if(tempInt == 255)
+                        tempInt--;
+                    arreglo3d[i][j][k] = tempInt;
                     break;
                 }
                 case 2:{
-                    arreglo3d[i][j][k] = imagenFuente->pixelColor(i,j).blue();
+                    tempInt = imagenFuente->pixelColor(i,j).blue();
+                    if(tempInt == 255)
+                        tempInt--;
+                    arreglo3d[i][j][k] = tempInt;
                     break;
                 }
                 }
