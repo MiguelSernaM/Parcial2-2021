@@ -12,9 +12,7 @@ private:
 public:
     escalado(int,int);
     void asiggnVect(vector< vector< vector<int> > > vec3d);
-    void sobremuestrear(int signox, int signoy);
-    void submuestrar(int signox,int signoy);
-    void detectDiference();
+    void escalameEsta();
     ~escalado();
 };
 
