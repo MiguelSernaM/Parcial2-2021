@@ -3,6 +3,7 @@
 #include "lecturaescritura.h"
 #include <iostream>
 #include <QString>
+#include "escalado.h"
 
 using namespace std;
 class menuapp
@@ -10,6 +11,7 @@ class menuapp
 private:
     QString nameFile;
     lecturaEscritura *elEscritor;
+    escalado *elEscalador;
 
 public:
     menuapp();
