@@ -1,5 +1,7 @@
 #include "lecturaescritura.h"
 
+
+
 lecturaEscritura::lecturaEscritura(QString nombre)
 {
     direction="../parcial2Qt/Imagenes/";
@@ -95,6 +97,14 @@ lecturaEscritura::lecturaEscritura(QString nombre)
     vector<vector<vector<int> > > lecturaEscritura::getVectorSinEscalar()
     {
         return vec3d;
+    }
+    int lecturaEscritura::getAncho() const
+    {
+        return ancho;
+    }
+    int lecturaEscritura::getAlto() const
+    {
+        return alto;
     }
 
 lecturaEscritura::~lecturaEscritura()

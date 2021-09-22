@@ -6,6 +6,7 @@ using namespace std;
 class escalado
 {
 private:
+    int ajustx,ajusty;
     int anchoLectura,altoLectura;
     int valex,valey;
     vector< vector< vector<int> > > vec3d2;

@@ -22,6 +22,8 @@ public:
     void escribirTxt();
     vector< vector< vector<int> > > getVectorSinEscalar();
     ~lecturaEscritura();
+    int getAncho() const;
+    int getAlto() const;
 };
 
 #endif // LECTURAESCRITURA_H
