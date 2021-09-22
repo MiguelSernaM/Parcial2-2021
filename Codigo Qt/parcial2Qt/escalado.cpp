@@ -8,7 +8,7 @@ escalado::escalado(int valxlec, int valylec)
     altoLectura = valylec;
     ajustx = anchoLectura;
     ajusty = altoLectura;
-    escalameEsta();
+    imagenaEscalar = new QImage;
 
 }
 
@@ -20,135 +20,125 @@ void escalado::asiggnVect(vector< vector< vector<int> > > vec3d)
 void escalado::escalameEsta()
 {
 vector<vector<vector<int>>> vectTemp(8, vector< vector<int> >(8 , vector<int>(3)));
-int redProm=0,greenProm=0,blueProm=0;
-int contadorx=0, contadory=0;
-int columns=0,filas=0;
-int divProm=0;
-int posAuX=0,posAuy=0;
-//es mas chiquita en los dos ejes x< y<
-if(anchoLectura < valex && altoLectura < valey){
-
-}
-//es mas chiquita en solo el eje x e igual en el y x< y==
-else if(anchoLectura < valex && altoLectura == valey){
-
-}
-//es mas chiquita en solo el eje x y es mas grande en y x< y>
-else if (anchoLectura < valex && altoLectura > valey){
-
-}
-//es mas chiquita en solo el eje y e igual en el x y< x==
-else if(altoLectura < valey && anchoLectura == valex){
-
-}
-//es mas chiquita en solo el eje y y mas grande en x y< x>
-else if(altoLectura < valey && anchoLectura > valex){
-
-}
-//es mas grande en los dos ejes y> x>
-else if(anchoLectura > valex && altoLectura > valey){
-//    for(int i = 0; i < 8; i++){
-//        contadory++;
-//        for(int j = 0; j < 8; j++){
-//            contadorx++;
-//            //este siempre va a ir. para calcular promedio rgb
-//            //digamos que tengo que coger 2 de ancho y 2 de alto
-
-//            for(int a=0; a < anchoLectura; a++){
-//                columns++;
-//                if(filas)
-//                for(int h=0; h < altoLectura;h++){
-
-
-//                    if(columns == anchoLectura){
-
-//                        break;
-//                    }
-//                    for(int k = 0; k < 3; k++){
-//                        switch (k) {
-//                        case 0:{
-//                            redProm += vec3d2[i][j][k];
-//                        }
-//                        case 1:{
-//                            greenProm += vec3d2[i][j][k];
-//                        }
-//                        case 2:{
-//                            blueProm += vec3d2[i][j][k];
-//                        }
-//                            divProm ++;
-//                        }
-//                    }
-//                }
-//            }
-//            for(int p = 0; p < 3; p++){
-//                switch (p) {
-//                case 0:{
-//                    vectTemp[i][j][p] = redProm;
-//                }
-//                case 1:{
-//                    vectTemp[i][j][p] = greenProm;
-//                }
-//                case 2:{
-//                    vectTemp[i][j][p] = blueProm;
-//                }
-//                }
-//            }
-
-//        }
-
-//        redProm=0;
-//        greenProm=0;
-//        blueProm=0;
-//    }
-    int arregloM[8][3];
-    int matriz[64][3];
-    int sumas=0;
-    int contador2=0;
-    int contadorAzul=0,contadorRojo=0,contadorVerde=0;
-    for(int i = 0; i < anchoLectura; i++){
-        for(int j=0,contador=0; j < altoLectura; j++){
-            for(int k=0; k < 3; k++){
-                sumas += vec3d2[i][j][k];
-                switch (k) {
+//solucion bajo mi concepto general
+    int tempInt;
+    float radiox = anchoLectura/8;
+    float radioy = altoLectura/8;
+    short x = 8;
+    while(x > 0){
+        x--;
+        short y=8;
+        while(y > 0){
+            y--;
+            for(int i = 0; i < 3;i++){
+                switch (i) {
                 case 0:{
-                    arregloM[contador][0] += vec3d2[i][j][k];
-
+                    tempInt=imagenaEscalar->pixelColor((x*radiox),(y*radioy)).red();
+                    if(tempInt == 255){
+                        tempInt--;
+                    }
+                    vectTemp[x][y][i] = tempInt;
+                    break;
                 }
                 case 1:{
-                    arregloM[contador][1] += vec3d2[i][j][k];
+                    tempInt = imagenaEscalar->pixelColor((x*radiox),(y*radioy)).green();
+                    if(tempInt == 255){
+                        tempInt--;
+                    }
+                    vectTemp[x][y][i] = tempInt;
+                    break;
                 }
                 case 2:{
-                    arregloM[contador][2] += vec3d2[i][j][k];
+                    tempInt = imagenaEscalar->pixelColor((x*radiox),(y*radioy)).blue();
+                    if(tempInt == 255){
+                        tempInt--;
+                    }
+                    vectTemp[x][y][i] = tempInt;
+                    break;
                 }
                 }
-                //k == 0 rojo R
-                //k == 1 verde G
-                //k == 2 azul B
-            }
-            contador++;
-            if(contador == 7){
-                //arregloM[contador2] = sumas;
-                contador2++;
             }
         }
-
     }
+    vec3d2 = vectTemp;
+    cout << "vamos a ver";
 
+//-----------------------------------------------------------------------------------------
+
+//    int arregloM[8][3] = {{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0}};
+//    int matriz[64][3];
+
+//    for(int i = 0,contador3=0,contMatrix=0; i < anchoLectura; i++){
+//        for(int j=0,contador=0,contador2=0; j < altoLectura; j++){
+//            for(int k=0; k < 3; k++){
+//                switch (k) {
+//                case 0:{
+//                    arregloM[contador][0] += vec3d2[i][j][k];
+//                   // cout << vec3d2[i][j][k]<<"|";
+//                    break;
+//                }
+//                case 1:{
+//                    arregloM[contador][1] += vec3d2[i][j][k];
+//                    //cout << vec3d2[i][j][k]<<"|";
+//                    break;
+//                }
+//                case 2:{
+//                    arregloM[contador][2] += vec3d2[i][j][k];
+//                   // cout << vec3d2[i][j][k]<<"|"<<endl;
+//                    break;
+//                }
+//                }
+
+//            }
+//            contador2++;
+//            if(contador2 == (anchoLectura/8)){
+//                contador2 = 0;
+//                contador++;
+//            }
+//            if(contador == 7){
+//                contador = 0;
+//            }
+//        }
+//        contador3++;
+//        cout << arregloM[0][0] <<" "<<arregloM[0][1]<<" "<<arregloM[0][2];
+//        if(contador3 == (altoLectura/8)){
+//            contador3 = 0;
+
+//            for (int p =0;p < 8;p++ ) {
+//                for(int o = 0; o < 3;o++){
+//                    matriz[contMatrix][o]=arregloM[p][o] / (altoLectura/8)*(anchoLectura/8);
+//                    cout << arregloM[p][o] / (altoLectura/8)*(anchoLectura/8) << endl;
+//                    arregloM[p][o] = 0;
+
+//                }
+//            }
+//            contMatrix++;
+//        }
+
+//    }
+//    int contadura = 0;
+//for(int i = 0; i < 64; i++){
+//    cout<<"{";
+//    for(int j = 0; j < 3; j++){
+//        cout << matriz[i][j] << " , " ;
+//    }
+//    cout <<"}"<<++contadura<<endl;
+//}
 
 }
-//es mas grande solo en x y igual en y x> y==
-else if(anchoLectura > valex && altoLectura == valey){
 
+void escalado::asignarImagen(QImage *imagen)
+{
+    imagenaEscalar = imagen;
 }
 
-//es mas grande solo en y y igual en x y> x==
-else if(altoLectura > valey && anchoLectura == valex){
-
-}
+vector<vector<vector<int> > > escalado::getVectorScall()
+{
+    return vec3d2;
 }
 
 
 escalado::~escalado()
 {
-
+    delete imagenaEscalar;
 }

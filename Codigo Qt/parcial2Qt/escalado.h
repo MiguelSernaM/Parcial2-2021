@@ -2,10 +2,12 @@
 #define ESCALADO_H
 #include <vector>
 #include <iostream>
+#include <QImage>
 using namespace std;
 class escalado
 {
 private:
+    QImage *imagenaEscalar;
     int ajustx,ajusty;
     int anchoLectura,altoLectura;
     int valex,valey;
@@ -14,6 +16,8 @@ public:
     escalado(int,int);
     void asiggnVect(vector< vector< vector<int> > > vec3d);
     void escalameEsta();
+    void asignarImagen(QImage *imagen);
+    vector < vector < vector<int> >> getVectorScall();
     ~escalado();
 };
 

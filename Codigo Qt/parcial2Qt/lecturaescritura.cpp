@@ -1,11 +1,10 @@
 #include "lecturaescritura.h"
 
 
-
 lecturaEscritura::lecturaEscritura(QString nombre)
 {
     direction="../parcial2Qt/Imagenes/";
-    nombre= "prueba.JPG";
+    nombre= "piskel.png";
     direction+=nombre;
     imagenFuente = new QImage(direction);
     if(!imagenFuente->load(direction)){
@@ -17,7 +16,7 @@ lecturaEscritura::lecturaEscritura(QString nombre)
     alto = imagenFuente->height();
     color = 3;
     escribirDatos();
-    pruebaxd();
+    //pruebaxd();
 }
 
     void lecturaEscritura::escribirDatos()
@@ -54,16 +53,16 @@ lecturaEscritura::lecturaEscritura(QString nombre)
         }
     }
     vec3d = arreglo3d;
-    cout<<"Content of 3D Vector: "<<endl;
-    for(int i=0;i<ancho;++i){
-        for(int j=0;j<alto;++j){
-            for(int k=0;k<color;++k){
-                cout<<arreglo3d[i][j][k]<<' ';
-            }
-            cout << "-";
-        }
-        cout<<endl;
-    }
+//    cout<<"Content of 3D Vector: "<<endl;
+//    for(int i=0;i<ancho;++i){
+//        for(int j=0;j<alto;++j){
+//            for(int k=0;k<color;++k){
+//                cout<<arreglo3d[i][j][k]<<' ';
+//            }
+//            cout << "-";
+//        }
+//        cout<<endl;
+//    }
     }
 
     void lecturaEscritura::pruebaxd()
@@ -80,17 +79,12 @@ lecturaEscritura::lecturaEscritura(QString nombre)
         }
     }
 
-    void lecturaEscritura::escribirTxt()
+    void lecturaEscritura::escribirTxt(vector< vector< vector<int> > > vec3D)
     {
-        QString linea1, linea2;
-        QFile archivo("../example/Generado/");
-        if (archivo.open(QIODevice::ReadOnly)) {
-            QTextStream in(&archivo);
-            while (!in.atEnd())
-            {
-                linea1 = in.readLine();
-    }
-        }
+        ofstream myfile;
+          myfile.open ("../parcial2Qt/Generado/copiame.txt");
+          myfile << "Writing this to a file.\n";
+          myfile.close();
     }
 
 
@@ -106,6 +100,11 @@ lecturaEscritura::lecturaEscritura(QString nombre)
     {
         return alto;
     }
+    QImage *lecturaEscritura::getImagenFuente() const
+    {
+        return imagenFuente;
+    }
+
 
 lecturaEscritura::~lecturaEscritura()
 {
