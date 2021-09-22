@@ -1,9 +1,8 @@
 #ifndef LECTURAESCRITURA_H
 #define LECTURAESCRITURA_H
 #include <QImage>
-#include <QTextStream>
+#include <fstream>
 #include <QString>
-#include <QFile>
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -19,11 +18,12 @@ public:
     lecturaEscritura(QString nombre);
     void escribirDatos();
     void pruebaxd();
-    void escribirTxt();
+    void escribirTxt(vector< vector< vector<int> > > vec3D);
     vector< vector< vector<int> > > getVectorSinEscalar();
     ~lecturaEscritura();
     int getAncho() const;
     int getAlto() const;
+    QImage *getImagenFuente() const;
 };
 
 #endif // LECTURAESCRITURA_H
