@@ -10,10 +10,6 @@ escalado::escalado(int valxlec, int valylec)
 
 }
 
-void escalado::asiggnVect(vector< vector< vector<int> > > vec3d)
-{
-    vec3d2 = vec3d;
-}
 
 void escalado::escalameEsta()
 {
@@ -25,54 +21,6 @@ void escalado::escalameEsta()
     int radioy = altoLectura/8;
     bool mayorx = false;
     bool mayory = false;
-
-        //reduccion pura
-//    if(anchoLectura > valex && altoLectura > valey){
-//        short x = 8;
-//        while(x > 0){
-//            x--;
-//            short y=8;
-//            while(y > 0){
-//                y--;
-
-//                for(int i = 0; i < 3;i++){
-//                    switch (i) {
-//                    case 0:{
-
-//                        tempInt=imagenaEscalar->pixelColor((x*radiox),(y*radioy)).red();
-
-//                        if(tempInt == 255){
-//                            tempInt--;
-//                        }
-//                        vectTemp[x][y][i] = tempInt;
-//                        break;
-//                    }
-//                    case 1:{
-//                        tempInt = imagenaEscalar->pixelColor((x*radiox),(y*radioy)).green();
-//                        if(tempInt == 255){
-//                            tempInt--;
-//                        }
-//                        vectTemp[x][y][i] = tempInt;
-//                        break;
-//                    }
-//                    case 2:{
-//                        tempInt = imagenaEscalar->pixelColor((x*radiox),(y*radioy)).blue();
-//                        if(tempInt == 255){
-//                            tempInt--;
-//                        }
-//                        vectTemp[x][y][i] = tempInt;
-//                        break;
-//                    }
-//                    }
-//                }
-//            }
-//        }
-//    }
-    //aumentar imagen pura
-
-//    else if(anchoLectura < valex && altoLectura < valey){
-
-
         int contadorFilas=0,contadorColums=0;
         int pivote = altoLectura-1;
         float cotaX = 8/anchoLectura;
