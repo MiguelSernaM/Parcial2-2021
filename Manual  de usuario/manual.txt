@@ -2,11 +2,6 @@ Bienvenido al transformador de imagenes de Miguel Angel Serna              |
 Para usar el programa siga las siguientes instrucciones al pie de la letra |
 ----------------------------------------------------------------------------
 1)La imagen deseada tiene que ser colocada en la carpeta Codigo Qt/parcial2Qt/Imagenes
-  la imagen ingresada tiene que ser:
-	a) Más grande en ancho y alto que 8x8 ó b) Más pequeña en ancho y alto que 8x8
-	el programa no recibe imagenes que no cumplan alguna de estas 2 condiciones, 
-	tristemente a el señor Miguel le quedo grande hacer que el programa contara
-	con esas funcionalidades extras :(
 -----------------------------------------------------------------------------
 2) Una vez puesta su imagen en la carpeta indicada ejecute el programa de Qt, en este
    Tendra que indicar el nombre y tipo de su imagen. Ejemplo: donGato.jpg y presione 

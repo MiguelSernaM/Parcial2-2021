@@ -1,10 +1,10 @@
 #include "lecturaescritura.h"
 
 
-lecturaEscritura::lecturaEscritura(QString nombre)
+lecturaEscritura::lecturaEscritura(QString nombre_)
 {
     direction="../parcial2Qt/Imagenes/";
-    nombre= "piskel.png";
+    QString nombre=nombre_;
     direction+=nombre;
     imagenFuente = new QImage(direction);
     if(!imagenFuente->load(direction)){
@@ -14,60 +14,8 @@ lecturaEscritura::lecturaEscritura(QString nombre)
     }
     ancho = imagenFuente->width();
     alto = imagenFuente->height();
-    color = 3;
-    escribirDatos();
-    //pruebaxd();
 }
 
-    void lecturaEscritura::escribirDatos()
-{
-    vector< vector< vector<int> > > arreglo3d(ancho, vector< vector<int> >(alto , vector<int>(color)));
-    int tempInt;
-    for(int i=0;i<ancho;++i){
-        for(int j=0;j<alto;++j){
-            for(int k=0;k<color;++k){
-                switch (k) {
-                case 0:{
-                    tempInt = imagenFuente->pixelColor(i,j).red();
-                    if(tempInt == 255)
-                        tempInt--;
-                    arreglo3d[i][j][k] = tempInt;
-                    break;
-                }
-                case 1:{
-                    tempInt = imagenFuente->pixelColor(i,j).green();
-                    if(tempInt == 255)
-                        tempInt--;
-                    arreglo3d[i][j][k] = tempInt;
-                    break;
-                }
-                case 2:{
-                    tempInt = imagenFuente->pixelColor(i,j).blue();
-                    if(tempInt == 255)
-                        tempInt--;
-                    arreglo3d[i][j][k] = tempInt;
-                    break;
-                }
-                }
-            }
-        }
-    }
-    vec3d = arreglo3d;
-    }
-
-    void lecturaEscritura::pruebaxd()
-    {
-        cout <<"---------------LAAPRIEBAAAAAA"<<endl;
-        for(int i=0;i<ancho;++i){
-            for(int j=0;j<alto;++j){
-                for(int k=0;k<color;++k){
-                    cout<<vec3d[i][j][k]<<' ';
-                }
-                cout << "-";
-            }
-            cout<<endl;
-        }
-    }
 
     void lecturaEscritura::escribirTxt(vector< vector< vector<int> > > vec3D)
     {
@@ -107,10 +55,7 @@ lecturaEscritura::lecturaEscritura(QString nombre)
     }
 
 
-    vector<vector<vector<int> > > lecturaEscritura::getVectorSinEscalar()
-    {
-        return vec3d;
-    }
+
     int lecturaEscritura::getAncho() const
     {
         return ancho;

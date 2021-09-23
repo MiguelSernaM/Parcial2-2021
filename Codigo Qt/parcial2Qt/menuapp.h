@@ -4,12 +4,13 @@
 #include <iostream>
 #include <QString>
 #include "escalado.h"
+#include <string.h>
 
 using namespace std;
 class menuapp
 {
 private:
-    QString nameFile;
+    string nameFile;
     lecturaEscritura *elEscritor;
     escalado *elEscalador;
 
