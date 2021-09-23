@@ -53,16 +53,6 @@ lecturaEscritura::lecturaEscritura(QString nombre)
         }
     }
     vec3d = arreglo3d;
-//    cout<<"Content of 3D Vector: "<<endl;
-//    for(int i=0;i<ancho;++i){
-//        for(int j=0;j<alto;++j){
-//            for(int k=0;k<color;++k){
-//                cout<<arreglo3d[i][j][k]<<' ';
-//            }
-//            cout << "-";
-//        }
-//        cout<<endl;
-//    }
     }
 
     void lecturaEscritura::pruebaxd()
@@ -83,8 +73,37 @@ lecturaEscritura::lecturaEscritura(QString nombre)
     {
         ofstream myfile;
           myfile.open ("../parcial2Qt/Generado/copiame.txt");
-          myfile << "Writing this to a file.\n";
+          myfile << "byte arrays[64][3]={";
+          for(int i = 0; i < 8; i++){
+              for(int j = 0; j < 8;j++){
+                  for(int k = 0; k < 3; k++){
+                      switch (k) {
+                      case 0:{
+                          myfile <<"{" <<vec3D[i][j][k] << ",";
+                          break;
+                      }
+                      case 1:{
+                          myfile << vec3D[i][j][k] << ",";
+                          break;
+                      }
+                      case 2:{
+                          myfile << vec3D[i][j][k] << "}";
+                          break;
+                      }
+                      }
+                  }
+                  if(j+1 < 8)
+                    myfile << ",";
+
+              }
+              if(i+1 == 8){
+                  myfile << "};";
+              }
+              if(i+1 < 8)
+                myfile << ",\n";
+          }
           myfile.close();
+          cout << "Tarea finalizada" << endl;
     }
 
 
