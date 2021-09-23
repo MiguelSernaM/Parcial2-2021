@@ -5,8 +5,6 @@ menuapp::menuapp()
     ingresarNombreImg();
     elEscritor = new lecturaEscritura(nameFile);
     elEscalador = new escalado(elEscritor->getAncho(),elEscritor->getAlto());
-    //elEscalador->asiggnVect(elEscritor->getVectorSinEscalar());
-    //elEscritor.escribirTxt(elEscalador.getVectorEscalado);
     elEscalador->asignarImagen(elEscritor->getImagenFuente());
     elEscalador->escalameEsta();
     elEscritor->escribirTxt(elEscalador->getVectorScall());
