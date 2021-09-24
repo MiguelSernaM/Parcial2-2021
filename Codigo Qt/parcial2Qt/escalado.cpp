@@ -27,7 +27,7 @@ void escalado::escalameEsta()
         float cotaY = 8/altoLectura;
         if(anchoLectura > 8)
             mayorx = true;
-        if(anchoLectura > 8){
+        if(altoLectura > 8){
             mayory = true;
         }
         anchoLectura--;
@@ -139,11 +139,8 @@ void escalado::escalameEsta()
                     }
                     }
                 }
-
             }
         }
-
-
     vec3d2 = vectTemp;
     //-----------------------------------------------------------------------------------------
 
@@ -159,8 +156,6 @@ vector<vector<vector<int> > > escalado::getVectorScall()
 {
     return vec3d2;
 }
-
-
 escalado::~escalado()
 {
     delete imagenaEscalar;
